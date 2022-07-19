@@ -28,8 +28,15 @@ const readById = (id) => {
 };
 
 const readByEmail = (email) => {
-  return new Promise((resolve, reject) => {
+  return new Promise((res, rej) => {
     const user = data.users.find((e) => e.email === email);
+    res(user);
+  });
+}
+
+const readByPhone = (phone) => {
+  return new Promise((res, rej) => {
+    const user = data.users.find((e) => e.phone === phone);
     resolve(user);
   });
 }
@@ -52,4 +59,4 @@ const remove = (id) => {
   });
 };
 
-module.exports = { allUsers, create, readById, readByEmail, update, remove };
+module.exports = { allUsers, create, readById, readByEmail, readByPhone, update, remove };

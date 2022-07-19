@@ -14,6 +14,14 @@ const getAllUsers = async (req, res) => {
 const createUser = async (req, res) => {
   try {
     let user = await getReqData(req);
+    const { phone } = JSON.parse(user);
+    const check_user = User.readByPhone(phone);
+    if (check_user) {
+      res.writeHead(400, { "Content-Type": "application/json" });
+      return res.end(
+        JSON.stringify({ message: "Cannot have same phone number" })
+      );
+    }
     let userData = await User.create(JSON.parse(user));
     res.writeHead(200, { "Content-Type": "application/json" });
     return res.end(JSON.stringify(userData));
