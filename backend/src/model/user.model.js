@@ -27,6 +27,13 @@ const readById = (id) => {
   });
 };
 
+const readByEmail = (email) => {
+  return new Promise((resolve, reject) => {
+    const user = data.users.find((e) => e.email === email);
+    resolve(user);
+  });
+}
+
 const update = (id, user) => {
   return new Promise((res, rej) => {
     const pos = data.users.findIndex((e) => e.id == id);
@@ -45,4 +52,4 @@ const remove = (id) => {
   });
 };
 
-module.exports = { allUsers, create, readById, update, remove };
+module.exports = { allUsers, create, readById, readByEmail, update, remove };
