@@ -11,7 +11,7 @@ const allUsers = () => {
 const create = (user) => {
   return new Promise((res, rej) => {
     let newUser = {
-      id: Math.floor(4 + Math.random() * 10),
+      id: Math.floor(4 + Math.random() * 1000),
       ...user,
     };
     data.users.push(newUser);
@@ -37,7 +37,7 @@ const readByEmail = (email) => {
 const readByPhone = (phone) => {
   return new Promise((res, rej) => {
     const user = data.users.find((e) => e.phone === phone);
-    resolve(user);
+    res(user);
   });
 }
 

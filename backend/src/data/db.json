@@ -1,4 +1,12 @@
 {
-    "users":[],
-    "todos":[]
+  "users": [
+    {
+      "id": 5,
+      "name": "Mitul",
+      "email": "mitul@gmail.com",
+      "password": "mitul123",
+      "phone": 7032572595
+    }
+  ],
+  "todos": []
 }

@@ -15,7 +15,8 @@ const createUser = async (req, res) => {
   try {
     let user = await getReqData(req);
     const { phone } = JSON.parse(user);
-    const check_user = User.readByPhone(phone);
+    const check_user = await User.readByPhone(phone);
+    console.log('check_user:', check_user)
     if (check_user) {
       res.writeHead(400, { "Content-Type": "application/json" });
       return res.end(
@@ -38,11 +39,12 @@ const updateUser = async (req, res, id) => {
       res.end(JSON.stringify({ message: "User Not Found" }));
     }
     const userData = await getReqData(req);
-    const { name, email, password } = JSON.parse(userData);
+    const { name, email, password, phone } = JSON.parse(userData);
     const updatedUser = {
       name: name || user.name,
       email: email || user.email,
       password: password || user.password,
+      phone : phone || user.phone,
       updatedAt: new Date(),
     };
     const newUpdatedUser = await User.update(id, updatedUser);

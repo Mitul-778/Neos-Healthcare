@@ -11,7 +11,7 @@ const allTodos = () => {
 const create = (todo) => {
   return new Promise((res, rej) => {
     let newTodo = {
-      id: Math.floor(4 + Math.random() * 10),
+      id: Math.floor(4 + Math.random() * 1000),
       ...todo,
     };
     data.todos.push(newTodo);
@@ -38,7 +38,7 @@ const update = (id, todo) => {
 
 const remove = (id) => {
   return new Promise((res, rej) => {
-    let newData = data.todos.filter((e) => e.id !== id);
+    let newData = data.todos.filter((e) => (e.id != id));
     data.todos = newData;
     writeToFile(path.join(__dirname, "../data/db.json"), data);
     res(newData);
